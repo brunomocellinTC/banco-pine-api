@@ -1,0 +1,32 @@
+{
+  "name": "automacao-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "report": "npm run report:generate && allure open allure-report",
+    "report:generate": "node -e \"require('fs').rmSync('allure-report',{recursive:true,force:true})\" && allure generate allure-results -o allure-report",
+    "report:open": "allure open allure-report",
+    "report:html": "npm run report:html:generate && npm run report:html:open",
+    "report:html:generate": "node -e \"require('fs').rmSync('allure-report',{recursive:true,force:true})\" && set ALLURE_SINGLE_FILE=1&& allure generate allure-results -o allure-report",
+    "report:html:open": "start allure-report\\index.html",
+    "report:clear": "node -e \"const fs=require('fs'); for (const dir of ['allure-report','allure-results']) { fs.rmSync(dir,{recursive:true,force:true}); fs.mkdirSync(dir,{recursive:true}); }\"",
+    "allure:generate": "npm run report:generate",
+    "allure:open": "npm run report:open",
+    "test:allure": "npm test && npm run report:generate && npm run report:open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0",
+    "allure": "^3.20.1",
+    "allure-playwright": "^3.10.2",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
+  }
+}

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "target": "ES2022",
+      "module": "commonjs",
+      "moduleResolution": "bundler",
+      "esModuleInterop": true,
+      "strict": true,
+      "types": ["node"],
+      "resolveJsonModule": true,
+      "skipLibCheck": true
+    },
+    "include": [
+      "Clients/**/*.ts",
+      "Models/**/*.ts",
+      "Tests/**/*.ts",
+      "fixtures/**/*.ts",
+      "Scripts/**/*.ts",
+      "Data/**/*.json",
+      "playwright.config.ts"
+    ]
+  }
