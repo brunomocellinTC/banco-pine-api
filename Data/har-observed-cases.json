@@ -1,0 +1,3156 @@
+{
+  "source": "9 arquivos HAR do usuário, sem credenciais/headers/corpos",
+  "totalRawRequests": 171,
+  "cases": [
+    {
+      "method": "GET",
+      "route": "/api/v1/Autenticacao/ObterTecladoVirtual",
+      "status": 200,
+      "query": {
+        "cpf": "${ENV:CPF}"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Autenticacao",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Autenticacao/ObterTecladoVirtual",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Autenticacao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Chat/ObterMensagens",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Chat",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/Cliente",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/ConsultaConta",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/Encerramento/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "ContaEncerramento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": false
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/InformeRendimento/Listar",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "ContaInformeRendimento",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/InformeRendimento/Obter",
+      "status": 422,
+      "query": {
+        "ano": "2026",
+        "mes": "08"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "ContaInformeRendimento",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/Listar",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/ListarContas",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/ListarPaises",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/ObterDeclaracao",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/ObterProfissoes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/ObterSaldo",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Conta/Perfil/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "ContaPerfil",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Dispositivo/Listar",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Dispositivo",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Emprestimo/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Emprestimo",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Emprestimo/ObterDocumento",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Emprestimo",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Emprestimo/ObterDocumento",
+      "status": 422,
+      "query": {
+        "numeroContrato": "${ENV:HAR_NUMEROCONTRATO}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Emprestimo",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Emprestimo/ObterParcelas",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Emprestimo",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Emprestimo/ObterProdutos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Emprestimo",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Endereco/Cep/{cep}",
+      "status": 200,
+      "query": {},
+      "pathParams": {
+        "cep": "1"
+      },
+      "documented": true,
+      "deprecated": false,
+      "group": "Endereco",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Endereco/Cep/{cep}",
+      "status": 200,
+      "query": {},
+      "pathParams": {
+        "cep": "92420130"
+      },
+      "documented": true,
+      "deprecated": false,
+      "group": "Endereco",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Endereco/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Endereco",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Faq/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Faq",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Banner/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Emprestimo/Produtos/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Funcionalidade/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Carteira",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {
+        "periodo": "ANO_ATUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {
+        "periodo": "ANUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {
+        "periodo": "MENSAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {
+        "periodo": "SEMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {
+        "periodo": "TOTAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {
+        "periodo": "TRIMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Historico",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/Investimento/Saldo",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "ANO_ATUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "ANUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "MENSAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "SEMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "TOTAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "TRIMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/ObterInvestimentos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Home/PJ/GerenciarUsuario/Obter",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Home",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoCarteira",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira/ObterPeriodoResgate",
+      "status": 200,
+      "query": {
+        "operacao": "${ENV:HAR_OPERACAO}"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoCarteira",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira/ObterPeriodoResgate",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoCarteira",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira/Operacao/Detalhe",
+      "status": 422,
+      "query": {
+        "operacao": "${ENV:HAR_OPERACAO}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira/Operacao/Detalhe",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Carteira/Resgate/Status",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoCarteira",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Comprovante/Aplicacao",
+      "status": 422,
+      "query": {
+        "codigoTransacao": "${ENV:HAR_CODIGOTRANSACAO}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoComprovante",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Comprovante/Aplicacao",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoComprovante",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Comprovante/Resgate",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoComprovante",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "ANO_ATUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "ANUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "MENSAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "SEMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "TOTAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {
+        "periodo": "TRIMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterInvestimentos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterPortifolio",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/ObterRelatorio",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Produto/Comprar/Status",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoProduto",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Produto/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoProduto",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Produto/ObterDetalhe",
+      "status": 422,
+      "query": {
+        "idProduto": "${ENV:HAR_IDPRODUTO}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoProduto",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Produto/ObterDetalhe",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoProduto",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {
+        "periodo": "ANO_ATUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {
+        "periodo": "ANUAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {
+        "periodo": "MENSAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {
+        "periodo": "SEMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {
+        "periodo": "TOTAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {
+        "periodo": "TRIMESTRAL"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Resumo",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Investimento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Simulacao/ObterFiltro",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoSimulacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Simulacao/ObterProduto",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoSimulacao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Simulacao/ObterProdutos",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "InvestimentoSimulacao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Suitability/Perfil/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoSuitability",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Investimento/Suitability/Questionario/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "InvestimentoSuitability",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Notificacao/Obter",
+      "status": 200,
+      "query": {
+        "tipo": "LIDA"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Notificacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Notificacao/Obter",
+      "status": 200,
+      "query": {
+        "tipo": "RECENTE"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Notificacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Notificacao/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Notificacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Onboarding/Endereco/Consultar",
+      "status": 200,
+      "query": {
+        "Cep": "92420130"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Onboarding",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Onboarding/Endereco/Consultar",
+      "status": 400,
+      "query": {
+        "Cep": "batata"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Onboarding",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Onboarding/Endereco/Consultar",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Onboarding",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Onboarding/EstadoCivil",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Onboarding",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Onboarding/Profissoes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Onboarding",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/PJ/Aprovacao/Historico",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PjAprovacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/PJ/Aprovacao/Pendentes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PjAprovacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/PJ/Aprovacao/Pendentes/Quantidade",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PjAprovacao",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/PJ/GerenciarUsuario/Listar",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "PjGerenciarUsuario",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/PJ/GerenciarUsuario/Perfis",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PjGerenciarUsuario",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Agendamentos",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 4
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Agendamentos",
+      "status": 401,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Autorizacoes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "paginalAtual",
+          "registrosPorPagina",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Autorizacoes",
+      "status": 401,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Autorizacoes/Historico",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "paginalAtual",
+          "registrosPorPagina",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Recorrencias",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "paginalAtual",
+          "registrosPorPagina",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Automatico/Recorrencias",
+      "status": 401,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixAutomatico",
+      "responseShape": {
+        "keys": [],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Chave/Obter",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixChave",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Chave/Obter",
+      "status": 422,
+      "query": {
+        "chave": "${ENV:CHAVE_PIX_TESTE}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "PixChave",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Chave/ObterLista",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixChave",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Chave/Possui",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixChave",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Contestacao/Listar",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixConstestacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Favorito/Listar",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixFavorito",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Limites/ObterPorProduto",
+      "status": 200,
+      "query": {
+        "idProduto": "${ENV:HAR_IDPRODUTO}"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixLimite",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Limites/ObterPorProduto",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixLimite",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Limites/ObterProdutos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "PixLimite",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Recorrencia/ListarEfetivasCanceladas",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixRecorrencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Recorrencia/ObterAgendamentos",
+      "status": 500,
+      "query": {
+        "recorrencia": "${ENV:HAR_RECORRENCIA}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "PixRecorrencia",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Recorrencia/ObterAgendamentos",
+      "status": 500,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "PixRecorrencia",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Reivindicacao/Listar",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixReivindicacao",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/Infracao/ObterMotivos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/ListarHistoricoAgendamento",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/ObterComprovante",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/ObterHistorico",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/ObterInstituicoes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/ObterTipoContas",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Pix/Transferencias/ObterTransacoesRecentes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "PixTransferencia",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Seguros/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Seguros",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Agendamento",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "TedAgendamento",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Comprovante",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Comprovante",
+      "status": 500,
+      "query": {
+        "CodigoOperacao": "${ENV:HAR_CODIGOOPERACAO}"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "server-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Extratos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Favorecido/Obter",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "TedFavorito",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Limites/ObterPorProduto",
+      "status": 200,
+      "query": {
+        "idProduto": "${ENV:HAR_IDPRODUTO}"
+      },
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "TedLimite",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Limites/ObterPorProduto",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "TedLimite",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/Limites/ObterProdutos",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "TedLimite",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/ObterHistorico",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/ObterInstituicoes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/ObterTipoContas",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Ted/ObterTransacoesRecentes",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Ted",
+      "responseShape": {
+        "keys": [
+          "itens",
+          "mensagem",
+          "reqId",
+          "requestId",
+          "totalRegistros"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "success",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Versao/Obter",
+      "status": 400,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Versao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Versao/Obter",
+      "status": 422,
+      "query": {
+        "parametro": "1"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Versao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Versao/Obter",
+      "status": 422,
+      "query": {
+        "parametro": "Android"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Versao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Versao/Obter",
+      "status": 422,
+      "query": {
+        "parametro": "android"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Versao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "GET",
+      "route": "/api/v1/Versao/Obter",
+      "status": 422,
+      "query": {
+        "parametro": "iOS"
+      },
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Versao",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/v1/Chat/Mensagem",
+      "status": 200,
+      "query": {},
+      "pathParams": {},
+      "documented": true,
+      "deprecated": false,
+      "group": "Chat",
+      "responseShape": {
+        "keys": [
+          "item",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": true
+      },
+      "caseType": "success",
+      "observations": 2
+    },
+    {
+      "method": "POST",
+      "route": "/api/v1/Chat/Mensagem",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Chat",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    },
+    {
+      "method": "POST",
+      "route": "/api/v1/Conta/AlterarStatus",
+      "status": 422,
+      "query": {},
+      "pathParams": {},
+      "documented": false,
+      "deprecated": false,
+      "group": "Conta",
+      "responseShape": {
+        "keys": [
+          "codigo",
+          "erros",
+          "mensagem",
+          "reqId",
+          "requestId"
+        ],
+        "itemNonNull": null
+      },
+      "caseType": "client-error",
+      "observations": 1
+    }
+  ]
+}

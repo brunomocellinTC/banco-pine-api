@@ -1,0 +1,34 @@
+[
+  {
+    "route": "/api/v1/Home/Investimento/Historico",
+    "description": "Periodo ANUAL (observado HTTP 200)",
+    "query": {
+      "periodo": "ANUAL"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "route": "/api/v1/Home/Investimento/Historico",
+    "description": "Periodo MENSAL (observado HTTP 200)",
+    "query": {
+      "periodo": "MENSAL"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "route": "/api/v1/Notificacao/Obter",
+    "description": "Tipo LIDA (observado HTTP 200)",
+    "query": {
+      "tipo": "LIDA"
+    },
+    "expectedStatus": 200
+  },
+  {
+    "route": "/api/v1/Notificacao/Obter",
+    "description": "Tipo RECENTE (observado HTTP 200)",
+    "query": {
+      "tipo": "RECENTE"
+    },
+    "expectedStatus": 200
+  }
+]

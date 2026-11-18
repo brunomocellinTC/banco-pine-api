@@ -1,0 +1,235 @@
+{
+  "fonte": "allure-report.zip enviado pelo usuário",
+  "total_falhas": 55,
+  "categorias": {
+    "null": 2,
+    "date-time": 44,
+    "schema extras": 3,
+    "no data 422": 2,
+    "200 vs 204": 2,
+    "uuid": 1,
+    "array": 1
+  },
+  "testes": [
+    {
+      "teste": "/api/v1/Conta/Encerramento/Obter: status 2xx e schema",
+      "categoria": "Resposta nula versus schema"
+    },
+    {
+      "teste": "/api/v1/Conta/ListarContas: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Conta/Obter: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Conta/ObterSaldo: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Conta/Perfil/Obter: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Emprestimo/Obter: status 2xx e schema",
+      "categoria": "Propriedade extra frente ao Swagger"
+    },
+    {
+      "teste": "/api/v1/Endereco/Obter: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Home/Investimento/Historico: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Home/ObterInvestimentos: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Home/PJ/GerenciarUsuario/Obter: status 2xx e schema",
+      "categoria": "Sem massa para sucesso (HTTP 422)"
+    },
+    {
+      "teste": "/api/v1/Investimento/ObterInvestimentos: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Investimento/ObterPortifolio: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Investimento/Resumo: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Notificacao/Obter: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/PJ/GerenciarUsuario/Listar: status 2xx e schema",
+      "categoria": "Sem massa para sucesso (HTTP 422)"
+    },
+    {
+      "teste": "/api/v1/Pix/Favorito/Listar: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Pix/Limites/ObterProdutos: status 2xx e schema",
+      "categoria": "HTTP 200 versus Swagger 204"
+    },
+    {
+      "teste": "/api/v1/Pix/Transferencias/ObterHistorico: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Pix/Transferencias/ObterTipoContas: status 2xx e schema",
+      "categoria": "Identificador de domínio versus UUID"
+    },
+    {
+      "teste": "/api/v1/Ted/Extratos: status 2xx e schema",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "/api/v1/Ted/Limites/ObterProdutos: status 2xx e schema",
+      "categoria": "HTTP 200 versus Swagger 204"
+    },
+    {
+      "teste": "/api/v1/Ted/ObterHistorico: status 2xx e schema",
+      "categoria": "Propriedade extra frente ao Swagger"
+    },
+    {
+      "teste": "ChatApiClient retorna as mensagens conforme o Swagger",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "Comprovante - lista conforme contrato",
+      "categoria": "Propriedade extra frente ao Swagger"
+    },
+    {
+      "teste": "Conta/ListarPaises: sem x-login-hash retorna 401 (autenticação)",
+      "categoria": "Resposta nula versus schema"
+    },
+    {
+      "teste": "Empréstimo - lista produtos (200)",
+      "categoria": "Array versus objeto"
+    },
+    {
+      "teste": "Extrato - consulta conforme contrato",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/Investimento/Historico [periodo=ANO_ATUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/Investimento/Historico [periodo=ANUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/Investimento/Historico [periodo=MENSAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/Investimento/Historico [periodo=SEMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/Investimento/Historico [periodo=TOTAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/Investimento/Historico [periodo=TRIMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/ObterInvestimentos [periodo=ANO_ATUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/ObterInvestimentos [periodo=ANUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/ObterInvestimentos [periodo=MENSAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/ObterInvestimentos [periodo=SEMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/ObterInvestimentos [periodo=TOTAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Home/ObterInvestimentos [periodo=TRIMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/ObterInvestimentos [periodo=ANO_ATUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/ObterInvestimentos [periodo=ANUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/ObterInvestimentos [periodo=MENSAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/ObterInvestimentos [periodo=SEMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/ObterInvestimentos [periodo=TOTAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/ObterInvestimentos [periodo=TRIMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/Resumo [periodo=ANO_ATUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/Resumo [periodo=ANUAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/Resumo [periodo=MENSAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/Resumo [periodo=SEMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/Resumo [periodo=TOTAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Investimento/Resumo [periodo=TRIMESTRAL] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Notificacao/Obter [tipo=LIDA] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "HAR | GET | filtros comprovados | /api/v1/Notificacao/Obter [tipo=RECENTE] (HAR HTTP 200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "Home - carteira de investimentos (200)",
+      "categoria": "DateTime sem timezone"
+    },
+    {
+      "teste": "Investimento - carteira (200)",
+      "categoria": "DateTime sem timezone"
+    }
+  ]
+}

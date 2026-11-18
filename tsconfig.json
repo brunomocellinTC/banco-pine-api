@@ -1,21 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "ES2022",
-      "module": "commonjs",
-      "moduleResolution": "bundler",
-      "esModuleInterop": true,
-      "strict": true,
-      "types": ["node"],
-      "resolveJsonModule": true,
-      "skipLibCheck": true
-    },
-    "include": [
-      "Clients/**/*.ts",
-      "Models/**/*.ts",
-      "Tests/**/*.ts",
-      "fixtures/**/*.ts",
-      "Scripts/**/*.ts",
-      "Data/**/*.json",
-      "playwright.config.ts"
-    ]
-  }
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "types": [
+      "node"
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "Clients/**/*.ts",
+    "Models/**/*.ts",
+    "Tests/**/*.ts",
+    "playwright.config.ts"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "/api/v1/Endereco/Cep/{cep}": {
+    "pathParams": {
+      "cep": "01310100"
+    }
+  },
+  "/api/v1/Autenticacao/ObterTecladoVirtual": {
+    "query": {
+      "cpf": "PREENCHER_CPF_TESTE"
+    }
+  },
+  "/api/v1/Investimento/Carteira/Resgate/Status": {
+    "query": {
+      "idIdempotente": "PREENCHER_UUID_DE_RESGATE_EXISTENTE"
+    }
+  },
+  "/api/v1/Investimento/Produto/Comprar/Status": {
+    "query": {
+      "idIdempotente": "PREENCHER_UUID_DE_COMPRA_EXISTENTE"
+    }
+  }
+}

@@ -11,3 +11,14 @@ node_modules/
 # Allure
 /allure-results/
 /allure-report/
+
+/Data/get-fixtures.local.json
+
+/Data/mutation-fixtures.local.json
+
+# Evidências brutas podem conter dados pessoais, headers de autenticação e informações de conta
+*.har
+Data/*har*.local.json
+Data/query-combinations.local.json
+
+# Evidências brutas podem conter dados pessoais, headers de autenticação e informações de conta

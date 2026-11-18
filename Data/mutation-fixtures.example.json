@@ -1,0 +1,14 @@
+{
+  "POST /api/v1/Autenticacao/Login": {
+    "expectedStatus": 200,
+    "headers": {
+      "x-dispositivo-id": "SUBSTITUIR_POR_DADO_AUTORIZADO",
+      "x-dispositivo-nome": "SUBSTITUIR_POR_DADO_AUTORIZADO",
+      "x-nome-plataforma": "SUBSTITUIR_POR_DADO_AUTORIZADO"
+    },
+    "body": {
+      "OBSERVACAO": "Substituir pelo LoginInput do Swagger antes de habilitar RUN_MUTATIONS"
+    },
+    "badBody": null
+  }
+}
