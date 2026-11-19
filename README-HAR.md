@@ -1,52 +1,28 @@
-# Integração dos HARs no projeto Playwright
+# Evidências HAR nos testes dos domínios
 
-Para comparar **valores e corpos completos de cada uma das 171 requests**, consulte [README-HAR-1TO1.md](README-HAR-1TO1.md). A suíte 1:1 é habilitada separadamente e preserva as capturas repetidas.
+As 171 requests dos nove HARs foram consolidadas em 142 evidências sanitizadas em `Data/har-observed-cases.json`. As evidências enriquecem os testes existentes de cada domínio; não geram um segundo conjunto de 171 testes.
 
-Foram lidos os 9 HARs anexados. O arquivo `Data/har-observed-cases.json` contém apenas metadados sanitizados: método, rota, parâmetros ou placeholders de ambiente, status observado, contagem e indicação de status documentado.
-**HAR é histórico observado**, não garantia de que a API retornará o mesmo código em uma nova execução. Em especial, HTTP 200 com `item: null` não comprova resultado funcional e HTTP 500 é defeito/diagnóstico, jamais sucesso.
+Uma entrada repetida (método, rota, query, path e contexto de autenticação) não é registrada novamente por vir de outro HAR. Quando a mesma entrada tem respostas diferentes, a evidência de sucesso tem prioridade; as capturas continuam rastreáveis no arquivo de dados.
 
-- Registros de operações HTTP no HAR: **171**; cenários distintos após sanitização: **142**.
-- Casos por método/status: GET 200: 100, GET 400: 11, GET 401: 3, GET 422: 16, GET 500: 9, POST 200: 1, POST 422: 2.
-- Status fora do Swagger: 31 casos distintos.
+## Verificações
 
-## Arquivos novos ou alterados
+- Status exato do cenário observado; 400, 401 e 422 são distintos. 500 nunca aprova como sucesso.
+- Schema do Swagger, com divergências conhecidas anotadas. `STRICT_SWAGGER=1` reprova também os desvios conhecidos e erros com status não documentado.
+- Presença e tipos dos campos capturados, inclusive campos aninhados comuns aos registros observados. Um objeto vazio não substitui resultado preenchido.
+- Identidade do erro: 29 evidências de 4xx possuem comparação do código ou, quando ausente, dos erros/mensagem. Apenas o SHA-256 da identidade é versionado, sem o conteúdo privado.
+- Teclado virtual exige cinco itens; consultas de CEP válido conferem a correspondência com a entrada.
+- Valores conhecidos da massa podem ser exigidos em `Data/get-fixtures.local.json`, propriedade `expected`.
 
-- `Data/har-observed-cases.json`: matriz de evidências sanitizada. **Não inclui HAR bruto, headers, respostas de conta, hash, CPF nem corpo de requisição.**
-- `Tests/support/har-cases.ts`: seleciona parâmetros observados para GETs, preferindo resposta com `item` preenchido; usa variável de ambiente quando o valor pode identificar recurso.
-- `Tests/support/get-fixtures.ts`: prioriza `Data/get-fixtures.local.json`, depois HAR, e por último GET sem parâmetros.
-- `Tests/GetBadRequest.spec.ts` e `Tests/HarObserved422.spec.ts`: reproduzem erros específicos *observados* (400 ou 422). Se não constam no Swagger, são marcados como divergência, não tratados como conformidade.
-- `Tests/HarGetVariants.spec.ts`: combinações de filtros capturadas no HAR, excluindo a combinação padrão da rota.
-- `Tests/HarObserved500.spec.ts`: cenário de regressão de 500, desativado por padrão; quando ativado, **500 reprova o teste**.
-- `Tests/QueryCombinations.spec.ts`: matriz adicional controlada por `Data/query-combinations.local.json`, não incluído no ZIP.
+Saldos, datas, IDs gerados e tamanhos de listas não ficam congelados na captura. Listas vazias são permitidas quando o contrato e a expectativa funcional do cenário permitem. Os dados observados não provam todas as regras de negócio.
 
-## Executar no notebook com sua VPN e seu .env local
+O arquivo sanitizado contém nomes de campos, tipos, identificadores das capturas e fingerprints dos erros. Não contém bodies brutos, headers de autenticação ou valores privados extraídos das respostas. Os arquivos `.har` continuam privados e ignorados pelo Git, mas **não são necessários para rodar os testes**.
+
+## Execução
 
 ```bash
-npm run test:har
-npm run test:matriz
-RUN_HAR_500=1 npm run test:har:500
-npm run report
+npm run test:gets
 ```
-`RUN_HAR_500=1` é sintaxe Bash/Git Bash; em PowerShell use `$env:RUN_HAR_500="1"; npm run test:har:500`. **Não há build necessário para receber este ZIP.**
 
-## Massa de negócio e filtros
+`RUN_HAR_500=1` inclui entradas históricas de 500 como diagnósticos dentro do endpoint correspondente. Se houver 500 atual, o teste reprova. Não são habilitadas por padrão.
 
-Quando um parâmetro privado (ID de produto, operação, contrato, código de transação, recorrência, CPF, chave PIX etc.) aparece em HAR, o valor é substituído por `${ENV:HAR_NOME_DO_PARAMETRO}` ou por `CPF`/`CHAVE_PIX_TESTE`. Você deve definir essa variável no `.env` com um recurso válido do ambiente (não compartilhar o valor).
-Para fornecer uma massa por rota, copie `Data/get-fixtures.example.json` para `Data/get-fixtures.local.json` e complete os valores. O arquivo local está ignorado pelo Git.
-As variações de filtros demonstradas no HAR não equivalem a todas as combinações possíveis: use `Data/query-combinations.example.json` como base e copie para `Data/query-combinations.local.json`, escolhendo status esperado por cenário e mantendo somente casos com massa conhecida.
-
-## Erros HTTP 500 observados
-
-- `GET /api/v1/Investimento/Carteira/Resgate/Status`
-- `GET /api/v1/Investimento/ObterRelatorio`
-- `GET /api/v1/Investimento/Produto/Comprar/Status`
-- `GET /api/v1/Investimento/Simulacao/ObterProduto`
-- `GET /api/v1/Investimento/Simulacao/ObterProdutos`
-- `GET /api/v1/Onboarding/Endereco/Consultar`
-- `GET /api/v1/Pix/Recorrencia/ObterAgendamentos`
-- `GET /api/v1/Ted/Comprovante`
-
-Os HARs com 500 não determinam se a causa é dado ausente, regra de negócio, exceção não tratada ou indisponibilidade. A automação não mascarará 500 como resposta correta.
-
-## Limitações
-Não executamos chamadas contra a API corporativa nem compilação/build, conforme pedido. Resultados de HAR foram aplicados como *dados observados*, e não como certificados de sucesso futuro. Não geramos POST/PATCH/DELETE com payload genérico: continuam exigindo massa segura e habilitação explícita.
+As combinações de `Data/query-combinations.local.json` também entram no respectivo endpoint, com deduplicação da entrada. Não há categoria separada de matriz ou HAR.

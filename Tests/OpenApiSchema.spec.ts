@@ -1,11 +1,15 @@
 import { expect, test } from '@playwright/test';
 import { parseResponseBody } from '../Clients/response-body';
-import { expectOpenApiResponse, expectErrorResponse, expectOpenApiRequest } from './support/openapi';
+import { expectOpenApiResponse, expectErrorResponse, expectOpenApiRequest, inspectResponseContract } from './support/openapi';
+import { GET_HAR_CASES, expectHarContent } from './support/har-cases';
 
 test('validates a response against its documented OpenAPI schema', () => {
     const route = '/api/v1/Autenticacao/ObterTecladoVirtual';
 
     expect(() => expectOpenApiResponse('GET', route, 200, {})).not.toThrow();
+    // O contrato sozinho admite {}; o teste do endpoint também exige os campos do HAR.
+    const observed = GET_HAR_CASES.find(c => c.route === route && c.status === 200)!;
+    expect(() => expectHarContent(observed, {})).toThrow();
     expect(() => expectOpenApiResponse('GET', route, 200, null)).toThrow(
         'Resposta fora do schema OpenAPI',
     );
@@ -69,4 +73,36 @@ test('impede payload com tipo divergente no POST', () => {
 test('preserva validação rigorosa do campo date-time observado', () => {
     expect(() => expectOpenApiResponse('GET','/api/v1/Endereco/Obter',200,
       {item:{dataRegistro:'18/11/2026 09:30:00'}})).toThrow('formato date-time');
+});
+
+
+// Os dados abaixo são sintetizados, não são informações de clientes ou corpo de HAR.
+test('aceita data ISO local do .NET apenas como desvio HAR identificado', () => {
+  const result=inspectResponseContract('GET','/api/v1/Endereco/Obter',200,
+    {item:{dataRegistro:'2026-07-14T10:09:50.54'}});
+  expect(result.errors).toEqual([]);
+  expect(result.observedDifferences.join(' ')).toContain('ISO local sem fuso');
+});
+
+test('não transforma qualquer data inválida em sucesso', () => {
+  const result=inspectResponseContract('GET','/api/v1/Endereco/Obter',200,
+    {item:{dataRegistro:'14/07/2026 10:09:50'}});
+  expect(result.errors.join(' ')).toContain('formato date-time');
+});
+
+test('não aceita divergência de status 422 em cenário de sucesso', () => {
+  expect(() => expectOpenApiResponse('GET','/api/v1/Home/PJ/GerenciarUsuario/Obter',422,{}))
+    .toThrow('não está documentado');
+});
+
+test('corpo vazio em 401 continua identificado como divergência de contrato', () => {
+  const result=inspectResponseContract('GET','/api/v1/Conta/ListarPaises',401,null);
+  expect(result.errors).toEqual([]);
+  expect(result.observedDifferences.join(' ')).toContain('corpo vazio');
+});
+
+test('propriedades desconhecidas fora das exceções HAR continuam reprovadas', () => {
+  const result=inspectResponseContract('GET','/api/v1/Autenticacao/ObterTecladoVirtual',200,
+    {inventado:true});
+  expect(result.errors.join(' ')).toContain('inventado');
 });

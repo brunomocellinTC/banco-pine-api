@@ -2,6 +2,9 @@
   "/api/v1/Endereco/Cep/{cep}": {
     "pathParams": {
       "cep": "01310100"
+    },
+    "expected": {
+      "/item/cep": "01310100"
     }
   },
   "/api/v1/Autenticacao/ObterTecladoVirtual": {

@@ -6,6 +6,7 @@ export async function attachHarMetadata(c: HarCase, actualStatus: number): Promi
     body:JSON.stringify({method:c.method,route:c.route,group:c.group,
       source:'HAR 18/11/2026',observedStatus:c.status,actualStatus,
       documentedStatus:c.documented,queryNames:Object.keys(c.query),
-      pathNames:Object.keys(c.pathParams),observations:c.observations},null,2),
+      pathNames:Object.keys(c.pathParams),observations:c.observations,sources:c.sources,
+      checks:{observedContent:!!c.responseContract,errorIdentity:!!c.errorIdentity}},null,2),
   });
 }

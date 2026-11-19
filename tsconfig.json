@@ -16,6 +16,7 @@
     "Clients/**/*.ts",
     "Models/**/*.ts",
     "Tests/**/*.ts",
+    "Scripts/coverage-reporter.ts",
     "playwright.config.ts"
   ]
 }

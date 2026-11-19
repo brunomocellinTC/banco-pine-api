@@ -1,4 +1,5 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
+import { createHash } from 'crypto';
 import evidence from '../../Data/har-observed-cases.json';
 import type { GetOptions } from '../../Clients/swagger-api-client';
 import { SwaggerGetRoute } from '../../Models/swagger-get-routes';
@@ -15,6 +16,16 @@ export interface HarCase {
   pathParams: Record<string, string>;
   responseShape: { keys: string[]; itemNonNull: boolean | null };
   caseType: string;
+  sources?: string[];
+  responseContract?: ObservedShape;
+  errorIdentity?: { fields: string[]; sha256: string };
+}
+
+interface ObservedShape {
+  types: string[];
+  nullable: boolean;
+  properties?: Record<string, ObservedShape>;
+  items?: ObservedShape;
 }
 
 /** Casos extraídos dos HARs sem headers, tokens, CPF, identificadores privados ou corpos. */
@@ -77,4 +88,74 @@ export function explainCase(c: HarCase): string {
   const readable = Object.entries(data).map(([key,val]) =>
     `${key}=${val.startsWith('${ENV:') ? '(env)' : val}`);
   return `${c.route} [${readable.length ? readable.join(', ') : 'sem filtros'}] (HAR HTTP ${c.status})`;
+}
+
+function canonical(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (value !== null && typeof value === 'object') return Object.fromEntries(
+    Object.keys(value).sort().map(key => [key, canonical((value as Record<string, unknown>)[key])]));
+  return value;
+}
+
+/** Reforça o teste existente com a evidência sanitizada; não depende dos HARs brutos. */
+export function expectHarContent(c: HarCase, body: unknown): void {
+  const issues: string[] = [];
+  function inspect(value: unknown, shape: ObservedShape, location: string): void {
+    if (value === null && shape.nullable) return;
+    // Um campo capturado como null não permite inferir o tipo de um futuro valor.
+    // O Swagger continua responsável por esse tipo. Corpo vazio, porém, é explícito.
+    if (!shape.types.length) {
+      if (location === '$' && value !== null) issues.push('$: esperado corpo ausente');
+      return;
+    }
+    const type = Array.isArray(value) ? 'array' : value === null ? 'null' : typeof value;
+    if (!shape.types.includes(type)) { issues.push(`${location}: tipo diferente do observado`); return; }
+    if (type === 'object' && shape.properties) {
+      const object = value as Record<string, unknown>;
+      for (const [key, child] of Object.entries(shape.properties)) {
+        if (!Object.prototype.hasOwnProperty.call(object, key)) issues.push(`${location}.${key}: campo observado ausente`);
+        else inspect(object[key], child, `${location}.${key}`);
+      }
+    }
+    if (Array.isArray(value) && shape.items) {
+      value.forEach((item, index) => inspect(item, shape.items!, `${location}[${index}]`));
+    }
+  }
+  if (c.responseContract) inspect(body, c.responseContract, '$');
+  else for (const key of c.responseShape.keys) {
+    if (body === null || typeof body !== 'object' || !(key in body)) issues.push(`$.${key}: campo observado ausente`);
+  }
+  if (c.responseShape.itemNonNull === true &&
+      (!body || typeof body !== 'object' || (body as {item?: unknown}).item == null)) {
+    issues.push('$.item: cenário de sucesso com resultado exige item preenchido');
+  }
+  if (c.errorIdentity) {
+    const object = body && typeof body === 'object' ? body as Record<string, unknown> : {};
+    const content = Object.fromEntries(c.errorIdentity.fields.map(key => [key, object[key]]));
+    const digest = createHash('sha256').update(JSON.stringify(canonical(content))).digest('hex');
+    if (digest !== c.errorIdentity.sha256) issues.push('Erro de negócio diferente do observado para esta entrada');
+  }
+  // Não mostra valores de conta nem mensagens privadas nos erros do teste.
+  expect(issues, 'Conteúdo divergente da evidência HAR sanitizada').toEqual([]);
+}
+
+/** Regras funcionais dos endpoints que possuem uma relação confirmada com a entrada. */
+export function expectEndpointContent(route: string, options: GetOptions, body: unknown): void {
+  const object = body && typeof body === 'object' ? body as Record<string, unknown> : {};
+  if (route === '/api/v1/Autenticacao/ObterTecladoVirtual') {
+    const item = object.item as {tecladoItens?: unknown[]} | undefined;
+    expect(Array.isArray(item?.tecladoItens), 'Teclado virtual deve conter a lista de teclas').toBe(true);
+    expect(item!.tecladoItens!.length, 'Teclado virtual deve conter cinco teclas').toBe(5);
+  }
+  if (['/api/v1/Endereco/Cep/{cep}', '/api/v1/Conta/ConsultarCep/{cep}',
+    '/api/v1/Onboarding/Endereco/Consultar'].includes(route)) {
+    const input = options.pathParams?.cep || options.query?.Cep;
+    if (input && /^\d{8}$/.test(input)) {
+      const item = object.item as Record<string, unknown> | null | undefined;
+      expect(item !== null && typeof item === 'object', 'Consulta de CEP válido exige endereço').toBe(true);
+      const result = item?.cep ?? item?.Cep;
+      expect(typeof result === 'string' && result.replace(/\D/g, '') === input,
+        'CEP retornado deve corresponder ao CEP solicitado').toBe(true);
+    }
+  }
 }

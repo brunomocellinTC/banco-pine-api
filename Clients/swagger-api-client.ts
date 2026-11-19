@@ -28,7 +28,7 @@ export class SwaggerApiClient extends BaseApiClient {
     }
     for (const [key, item] of Object.entries(info.query)) {
       const val = query[key];
-      if (item.required && val === undefined) throw new Error(`${route}: query obrigatória: ${key}`);
+      if (item.required && val === undefined && !options.allowInvalidParams) throw new Error(`${route}: query obrigatória: ${key}`);
       if (val === undefined || options.allowInvalidParams) continue;
       const values = item.enum as readonly unknown[] | null;
       if (values && !values.includes(val)) throw new Error(`${route}: ${key} fora do enum documentado`);

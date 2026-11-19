@@ -12,7 +12,7 @@ export default defineConfig({
   forbidOnly: Boolean(process.env.CI),
   retries: 0,
   workers: 1,
-  reporter: [['list'], ['allure-playwright', {resultsDir: 'allure-results', detail: true, suiteTitle: true,
+  reporter: [['list'], ['./Scripts/coverage-reporter.ts'], ['allure-playwright', {resultsDir: 'allure-results', detail: true, suiteTitle: true,
     environmentInfo: {framework: 'Playwright', contrato: 'swagger.json'}}]],
   use: {
     baseURL,

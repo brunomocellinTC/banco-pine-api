@@ -1,5 +1,7 @@
 # Correção dirigida pelo Allure (18/11/2026)
 
+> Registro histórico. A organização e os comandos atuais estão em README.md. Os resultados abaixo não representam uma execução da reorganização de 19/11/2026.
+
 ## Diagnóstico da execução informada
 
 - Total: **338**; **55 falharam**, **80 passaram**, **203 ignorados**.
@@ -45,7 +47,7 @@ STRICT_SWAGGER=1 npx playwright test --workers=1 --retries=0
 Para diagnóstico dos 500, em ambiente homologado e com autorização:
 
 ```bash
-RUN_HAR_500=1 npm run test:har:500
+RUN_HAR_500=1 npm run test:gets
 ```
 
 **Análise:** um 200 com `dataRegistro` sem offset é sucesso HTTP, mas desvio do OpenAPI 3 `date-time`; portanto ambos os fatos aparecem separadamente no Allure.

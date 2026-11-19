@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import {GET_ROUTES} from '../Models/swagger-get-routes';
 import {MUTATION_ROUTES} from '../Models/swagger-mutations';
+import coverage from '../Data/endpoint-coverage.json';
 
 test('Catálogos GET e mutações estão alinhados ao Swagger atualizado', () => {
  const swagger = JSON.parse(fs.readFileSync(path.resolve(process.cwd(),'swagger.json'),'utf8'));
@@ -15,4 +16,13 @@ test('Catálogos GET e mutações estão alinhados ao Swagger atualizado', () =>
  expect(MUTATION_ROUTES.map(m=>`${m.method} ${m.route}`).sort()).toEqual(muts);
  expect(getPaths).toHaveLength(108);
  expect(muts).toHaveLength(85);
+ // O inventário deve continuar completo ao atualizar o Swagger ou a lista de pendências.
+ expect(coverage.operations.map(item => item.operation).sort()).toEqual([
+   ...getPaths.map(route => `GET ${route}`), ...muts,
+ ].sort());
+ expect(new Set(coverage.operations.map(item => item.operation)).size).toBe(coverage.total);
+ for (const domain of new Set(coverage.operations.map(item => item.domain))) {
+   const filename = domain === 'PJ' ? 'Pj' : domain;
+   expect(fs.existsSync(path.resolve(process.cwd(), `Tests/${filename}.spec.ts`))).toBe(true);
+ }
 });

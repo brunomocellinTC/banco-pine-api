@@ -1,0 +1,1366 @@
+{
+  "source": "swagger.json e lista a testar.txt fornecida em 19/11/2026",
+  "counting": "Operação = método HTTP + rota, sem multiplicar filtros ou respostas HAR.",
+  "mappings": [
+    "GerenciarUsuario/Obter corresponde a Home/PJ/GerenciarUsuario/Obter.",
+    "Salvar questionário de suitability é POST, conforme Swagger.",
+    "Autorizações em PixAgendamento corresponde a Pix/Automatico/Autorizacoes.",
+    "Dispositivo cadastrar corresponde a Token/Otp/Cadastrar e Token/Firebase/Cadastrar.",
+    "TED favorito usa a rota Favorecido. InformeRendimento possui versões Conta/InformeRendimento e InformeRendimento, ambas catalogadas."
+  ],
+  "total": 193,
+  "pendingMassFromUser": 110,
+  "operations": [
+    {
+      "operation": "GET /api/v1/Autenticacao/ObterTecladoVirtual",
+      "domain": "Autenticacao",
+      "group": "Autenticacao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Autenticacao/Login",
+      "domain": "Autenticacao",
+      "group": "Autenticacao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Chat/Mensagem",
+      "domain": "Chat",
+      "group": "Chat",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Chat/ObterMensagens",
+      "domain": "Chat",
+      "group": "Chat",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Comprovante/Listar",
+      "domain": "Comprovante",
+      "group": "Comprovante",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Conta/ConsultaConta",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/Obter",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ObterDados",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Conta/AtualizarDadosPessoais",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ObterDadosPessoais",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ObterSaldo",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Conta/AlterarStatus",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ConsultarCep/{cep}",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Conta/AtualizarEndereco",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ObterEndereco",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ObterDeclaracao",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Conta/AtualizarDeclaracao",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ObterProfissoes",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ListarPaises",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ListarContas",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/Cliente",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/Listar",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/ListarComSessao",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Conta/IncluirEndereco",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Conta/Selecionar",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "PUT /api/v1/Conta/AlterarConta",
+      "domain": "Conta",
+      "group": "Conta",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Conta/Encerramento/Solicitar",
+      "domain": "Conta",
+      "group": "ContaEncerramento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Conta/Encerramento/Obter",
+      "domain": "Conta",
+      "group": "ContaEncerramento",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Conta/Encerramento/Cancelar",
+      "domain": "Conta",
+      "group": "ContaEncerramento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Conta/InformeRendimento/Listar",
+      "domain": "Conta",
+      "group": "ContaInformeRendimento",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Conta/InformeRendimento/Obter",
+      "domain": "Conta",
+      "group": "ContaInformeRendimento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Conta/Perfil/Obter",
+      "domain": "Conta",
+      "group": "ContaPerfil",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Conta/Perfil/Atualizar",
+      "domain": "Conta",
+      "group": "ContaPerfil",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Dispositivo/Listar",
+      "domain": "Dispositivo",
+      "group": "Dispositivo",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Dispositivo/Token/Otp/Cadastrar",
+      "domain": "Dispositivo",
+      "group": "Dispositivo",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Dispositivo/Token/Firebase/Cadastrar",
+      "domain": "Dispositivo",
+      "group": "Dispositivo",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "DELETE /api/v1/Dispositivo/Excluir",
+      "domain": "Dispositivo",
+      "group": "Dispositivo",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Emprestimo/ObterProdutos",
+      "domain": "Emprestimo",
+      "group": "Emprestimo",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Emprestimo/Obter",
+      "domain": "Emprestimo",
+      "group": "Emprestimo",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Emprestimo/ObterDocumento",
+      "domain": "Emprestimo",
+      "group": "Emprestimo",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Emprestimo/ObterParcelas",
+      "domain": "Emprestimo",
+      "group": "Emprestimo",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Endereco/Cep/{cep}",
+      "domain": "Endereco",
+      "group": "Endereco",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Endereco/Obter",
+      "domain": "Endereco",
+      "group": "Endereco",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Endereco/Atualizar",
+      "domain": "Endereco",
+      "group": "Endereco",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Extrato/Obter",
+      "domain": "Extrato",
+      "group": "Extrato",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Faq/Obter",
+      "domain": "Faq",
+      "group": "Faq",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/Banner/Obter",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/ObterOfertas",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/Funcionalidade/Obter",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/ObterInvestimentos",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Home/Investimento/Saldo",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/Investimento/Historico",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/ObterPortifolio",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/Investimento/Carteira",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/Emprestimo/Produtos/Obter",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Home/PJ/GerenciarUsuario/Obter",
+      "domain": "Home",
+      "group": "Home",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/InformeRendimento/Listar",
+      "domain": "InformeRendimento",
+      "group": "InformeRendimento",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/InformeRendimento/Obter",
+      "domain": "InformeRendimento",
+      "group": "InformeRendimento",
+      "deprecated": true,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/ObterInvestimentos",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Resumo",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/ObterPortifolio",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Carteira",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/DetalhePortifolio",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Carteira/Operacao/Detalhe",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/ObterRelatorio",
+      "domain": "Investimento",
+      "group": "Investimento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Carteira/Obter",
+      "domain": "Investimento",
+      "group": "InvestimentoCarteira",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Carteira/ObterPeriodoResgate",
+      "domain": "Investimento",
+      "group": "InvestimentoCarteira",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Investimento/Carteira/Resgate/Calcular",
+      "domain": "Investimento",
+      "group": "InvestimentoCarteira",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Investimento/Carteira/Resgate",
+      "domain": "Investimento",
+      "group": "InvestimentoCarteira",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Carteira/Resgate/Status",
+      "domain": "Investimento",
+      "group": "InvestimentoCarteira",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Comprovante/Aplicacao",
+      "domain": "Investimento",
+      "group": "InvestimentoComprovante",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Comprovante/Resgate",
+      "domain": "Investimento",
+      "group": "InvestimentoComprovante",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Produto/Obter",
+      "domain": "Investimento",
+      "group": "InvestimentoProduto",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Produto/ObterDetalhe",
+      "domain": "Investimento",
+      "group": "InvestimentoProduto",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Investimento/Produto/Comprar",
+      "domain": "Investimento",
+      "group": "InvestimentoProduto",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Produto/Comprar/Status",
+      "domain": "Investimento",
+      "group": "InvestimentoProduto",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Questionario/Obter",
+      "domain": "Investimento",
+      "group": "InvestimentoQuestionario",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Investimento/Questionario/Salvar",
+      "domain": "Investimento",
+      "group": "InvestimentoQuestionario",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Simulacao/ObterFiltro",
+      "domain": "Investimento",
+      "group": "InvestimentoSimulacao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Simulacao/ObterProduto",
+      "domain": "Investimento",
+      "group": "InvestimentoSimulacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Simulacao/ObterProdutos",
+      "domain": "Investimento",
+      "group": "InvestimentoSimulacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Suitability/Perfil/Obter",
+      "domain": "Investimento",
+      "group": "InvestimentoSuitability",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Suitability/Questionario/Obter",
+      "domain": "Investimento",
+      "group": "InvestimentoSuitability",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Investimento/Suitability/Questionario/Salvar",
+      "domain": "Investimento",
+      "group": "InvestimentoSuitability",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Investimento/Suitability/ObterPerfil",
+      "domain": "Investimento",
+      "group": "InvestimentoSuitability",
+      "deprecated": true,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Notificacao/Obter",
+      "domain": "Notificacao",
+      "group": "Notificacao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Notificacao/Lida",
+      "domain": "Notificacao",
+      "group": "Notificacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "PUT /api/v1/Notificacao/Lidas",
+      "domain": "Notificacao",
+      "group": "Notificacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Documento/Validacao",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Codigo/Solicitar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Codigo/Validar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Onboarding/Endereco/Consultar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Endereco/Cadastrar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Patrimonio/Cadastrar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Renda/Cadastrar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Onboarding/Profissoes",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Profissao",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Onboarding/EstadoCivil",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/EstadoCivil",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/DataNascimento",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Onboarding/Genero",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Genero",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Senha/Cadastrar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/ResidenciaFiscal/Cadastrar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Liveness/Cadastrar",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Documentos",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Onboarding/Termos/Aceite",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Onboarding/Termos",
+      "domain": "Onboarding",
+      "group": "Onboarding",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Pix/Agendamento/Cancelar",
+      "domain": "Pix",
+      "group": "PixAgendamento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Automatico/Autorizacoes",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Automatico/Autorizacoes/Historico",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Automatico/Autorizacao/Aprovar",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Automatico/Autorizacao/Rejeitar",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Automatico/Recorrencias",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Automatico/Recorrencia",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Automatico/Recorrencia/Aprovar",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Automatico/Recorrencia/Cancelar",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "PUT /api/v1/Pix/Automatico/Recorrencia/Atualizar",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Automatico/Agendamentos",
+      "domain": "Pix",
+      "group": "PixAutomatico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Beneficiario/Cadastrar",
+      "domain": "Pix",
+      "group": "PixBeneficiario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Beneficiario/Promover",
+      "domain": "Pix",
+      "group": "PixBeneficiario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Beneficiario/Verificar",
+      "domain": "Pix",
+      "group": "PixBeneficiario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "DELETE /api/v1/Pix/Chave/Excluir",
+      "domain": "Pix",
+      "group": "PixChave",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Chave/Possui",
+      "domain": "Pix",
+      "group": "PixChave",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Pix/Chave/ObterLista",
+      "domain": "Pix",
+      "group": "PixChave",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Pix/Chave/Obter",
+      "domain": "Pix",
+      "group": "PixChave",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Chave/Criar",
+      "domain": "Pix",
+      "group": "PixChave",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Chave/SolicitarCodigo",
+      "domain": "Pix",
+      "group": "PixChave",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Contestacao/Criar",
+      "domain": "Pix",
+      "group": "PixConstestacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Contestacao/Listar",
+      "domain": "Pix",
+      "group": "PixConstestacao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Pix/Contestacao/Cancelar",
+      "domain": "Pix",
+      "group": "PixConstestacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "DELETE /api/v1/Pix/Favorito/Deletar",
+      "domain": "Pix",
+      "group": "PixFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "DELETE /api/v1/Pix/Favorito/DeletarChave",
+      "domain": "Pix",
+      "group": "PixFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Favorito/Listar",
+      "domain": "Pix",
+      "group": "PixFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Pix/Favorito/Criar",
+      "domain": "Pix",
+      "group": "PixFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Favorito/AdicionarChave",
+      "domain": "Pix",
+      "group": "PixFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Limites/ObterPorProduto",
+      "domain": "Pix",
+      "group": "PixLimite",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Pix/Limites/Atualizar",
+      "domain": "Pix",
+      "group": "PixLimite",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Limites/ObterProdutos",
+      "domain": "Pix",
+      "group": "PixLimite",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Pix/QrCode/Gerar",
+      "domain": "Pix",
+      "group": "PixQrCode",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/QrCode/Processar",
+      "domain": "Pix",
+      "group": "PixQrCode",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Recorrencia/ObterAgendamentos",
+      "domain": "Pix",
+      "group": "PixRecorrencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Recorrencia/ListarEfetivasCanceladas",
+      "domain": "Pix",
+      "group": "PixRecorrencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Recorrencia/Cancelar",
+      "domain": "Pix",
+      "group": "PixRecorrencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/Cadastrar",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/Cancelar",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/ManterChave",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/Concluir",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/Confirmar",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/Consultar",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Reivindicacao/Receber",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Reivindicacao/Listar",
+      "domain": "Pix",
+      "group": "PixReivindicacao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/ObterHistorico",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/ObterTransacoesRecentes",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/ObterComprovante",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/ListarHistoricoAgendamento",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/ObterInstituicoes",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/ObterTipoContas",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Pix/Transferencias/FazerTransferencia",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Pix/Transferencias/FazerDevolucao",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Pix/Transferencias/Infracao/ObterMotivos",
+      "domain": "Pix",
+      "group": "PixTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/PJ/Aprovacao/Pendentes",
+      "domain": "PJ",
+      "group": "PjAprovacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/PJ/Aprovacao/Pendentes/Quantidade",
+      "domain": "PJ",
+      "group": "PjAprovacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/PJ/Aprovacao/Historico",
+      "domain": "PJ",
+      "group": "PjAprovacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/PJ/Aprovacao/Aprovar",
+      "domain": "PJ",
+      "group": "PjAprovacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/PJ/Aprovacao/Reprovar",
+      "domain": "PJ",
+      "group": "PjAprovacao",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/PJ/GerenciarUsuario/Listar",
+      "domain": "PJ",
+      "group": "PjGerenciarUsuario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "PATCH /api/v1/PJ/GerenciarUsuario/Acesso",
+      "domain": "PJ",
+      "group": "PjGerenciarUsuario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "DELETE /api/v1/PJ/GerenciarUsuario/Remover",
+      "domain": "PJ",
+      "group": "PjGerenciarUsuario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/PJ/GerenciarUsuario/Perfis",
+      "domain": "PJ",
+      "group": "PjGerenciarUsuario",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/PJ/GerenciarUsuario/Criar",
+      "domain": "PJ",
+      "group": "PjGerenciarUsuario",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Seguros/Obter",
+      "domain": "Seguros",
+      "group": "Seguros",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Senha/Codigo/Solicitar",
+      "domain": "Senha",
+      "group": "Senha",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Senha/Redefinir",
+      "domain": "Senha",
+      "group": "Senha",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Ted/Comprovante",
+      "domain": "Ted",
+      "group": "Ted",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Ted/ObterTipoContas",
+      "domain": "Ted",
+      "group": "Ted",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Ted/ObterInstituicoes",
+      "domain": "Ted",
+      "group": "Ted",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Ted/Extratos",
+      "domain": "Ted",
+      "group": "Ted",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Ted/ObterTransacoesRecentes",
+      "domain": "Ted",
+      "group": "Ted",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Ted/ObterHistorico",
+      "domain": "Ted",
+      "group": "Ted",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "GET /api/v1/Ted/Agendamento",
+      "domain": "Ted",
+      "group": "TedAgendamento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Ted/Agendamento",
+      "domain": "Ted",
+      "group": "TedAgendamento",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "DELETE /api/v1/Ted/Favorecido/Excluir",
+      "domain": "Ted",
+      "group": "TedFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Ted/Favorecido/Obter",
+      "domain": "Ted",
+      "group": "TedFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Ted/Favorecido/Criar",
+      "domain": "Ted",
+      "group": "TedFavorito",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Ted/Limites/ObterPorProduto",
+      "domain": "Ted",
+      "group": "TedLimite",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "PUT /api/v1/Ted/Limites/Atualizar",
+      "domain": "Ted",
+      "group": "TedLimite",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Ted/Limites/ObterProdutos",
+      "domain": "Ted",
+      "group": "TedLimite",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    },
+    {
+      "operation": "POST /api/v1/Ted/Transferencias",
+      "domain": "Ted",
+      "group": "TedTransferencia",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Unico/Onboarding/Envio",
+      "domain": "Unico",
+      "group": "Unico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Unico/Documento/Envio",
+      "domain": "Unico",
+      "group": "Unico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "POST /api/v1/Unico/Transacional",
+      "domain": "Unico",
+      "group": "Unico",
+      "deprecated": false,
+      "pendingMassFromUser": true
+    },
+    {
+      "operation": "GET /api/v1/Versao/Obter",
+      "domain": "Versao",
+      "group": "Versao",
+      "deprecated": false,
+      "pendingMassFromUser": false
+    }
+  ]
+}

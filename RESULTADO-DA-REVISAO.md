@@ -1,5 +1,7 @@
 # Revisão técnica — 18/11/2026
 
+> Registro histórico. A organização por domínios e a contabilização atual estão em README.md e Data/endpoint-coverage.json. As referências a suítes genéricas abaixo descrevem a versão anterior.
+
 ## Fonte de verdade
 
 `swagger.json` enviado nesta revisão é o contrato principal: **190 paths**, **193 operações**, **108 GET**, **67 POST**, **11 PUT**, **1 PATCH**, **6 DELETE**, **18 depreciadas**, **430 schemas**.
