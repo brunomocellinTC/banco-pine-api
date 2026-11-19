@@ -13,7 +13,8 @@
     "report:generate": "node -e \"require('fs').rmSync('allure-report',{recursive:true,force:true})\" && allure generate allure-results -o allure-report",
     "report:open": "allure open allure-report",
     "report:clear": "node -e \"const fs=require('fs'); for (const dir of ['allure-report','allure-results']) { fs.rmSync(dir,{recursive:true,force:true}); fs.mkdirSync(dir,{recursive:true}); }\"",
-    "test:har": "npm run test:gets"
+    "test:har": "npm run test:gets",
+    "har:import": "node Scripts/import-hars.cjs"
   },
   "keywords": [],
   "author": "",

@@ -2,7 +2,7 @@
 
 ## Grupos
 
-Os arquivos `Tests/{domínio}.spec.ts` registram os endpoints de seu domínio. As subdivisões seguem os grupos do Swagger, como PixChave, PixLimite e ContaEncerramento. Sucesso, erro e pendência pertencem ao mesmo endpoint. A lógica compartilhada está em `Tests/support/get-fixtures.ts`, usando os catálogos existentes de GETs e mutações.
+Os arquivos `Tests/{domínio}.spec.ts` declaram `test` e `describe` para os endpoints de seu domínio. As subdivisões seguem os grupos do Swagger, como PixChave, PixLimite e ContaEncerramento. Sucesso, erro e pendência pertencem ao mesmo endpoint. `Tests/support/get-fixtures.ts` apenas seleciona massa e executa verificações compartilhadas: não registra testes. Rótulos estáticos definem a árvore Allure como `automacao-api → tag do Swagger → endpoint`, inclusive para pendências. Os validadores locais ficam nas raízes ContractIntegrity e OpenApiSchema.
 
 As suítes genéricas GetSuccess, GetBadRequest, HarObserved, HarGetVariants, HarReplay, ApiErrors, MutationContracts e QueryCombinations foram integradas aos domínios. O comando `test:har` permanece apenas como alias de `test:gets`; `test:har:1to1` foi removido.
 
@@ -22,13 +22,13 @@ Copie `Data/get-fixtures.example.json` para `Data/get-fixtures.local.json` e inf
 
 Cada fixture aceita `query`, `pathParams`, `expectedStatus` e `expected`. A propriedade `expected` é um mapa de JSON Pointer para valor conhecido. Exemplo: `"/item/cep": "01310100"`. Esses valores são comparados exatamente, sem aparecer nos erros próprios da verificação. Não configure valores dinâmicos sem referência controlada.
 
-Quando houver massa explícita válida, ela substitui a pendência da lista para essa operação. O teste ainda precisa executar e aprovar antes de contar como cobertura real. GETs sem massa são apresentados apenas como pendentes; não se fabricam identificadores.
+Quando houver massa explícita válida ou uma captura com resultado preenchido, ela substitui a pendência de massa da lista para essa operação. O teste ainda precisa executar e aprovar antes de contar como cobertura real. GETs sem massa são apresentados apenas como pendentes; não se fabricam identificadores.
 
 `Data/query-combinations.local.json` continua aceito. Cada combinação é registrada no endpoint; uma entrada já existente é substituída pela expectativa explícita da combinação, sem outra chamada duplicada.
 
 ## Escritas
 
-POST/PUT/PATCH/DELETE exigem `RUN_MUTATIONS=1` e fixtures em `Data/mutation-fixtures.local.json`. Sem isso, existem apenas os placeholders. Sucesso valida o requestBody antes de enviar.
+POST/PUT/PATCH/DELETE exigem `RUN_MUTATIONS=1` e payload disponível, seja dos HARs importados ou de `Data/mutation-fixtures.local.json`. Os valores privados das capturas ficam em `Data/har-values.local.json`; copie-os para a VPN ou configure as variáveis no `.env`. Sem flag ou massa existem apenas os placeholders. Sucesso valida o requestBody antes de enviar. JSONs malformados capturados são enviados como texto, preservando o erro de validação original; não são substituídos por um objeto genérico.
 
 A fixture aceita `body`, `badBody`, `query`, `pathParams`, `headers`, `expectedStatus`, `badStatus` e `expected`. `badStatus` é 400 por padrão. Placeholders de ambiente são resolvidos recursivamente nos bodies. Escritas permanecem opt-in mesmo quando a captura histórica retornou erro.
 

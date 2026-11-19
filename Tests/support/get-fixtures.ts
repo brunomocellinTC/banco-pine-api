@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
-import { test, expect } from '@playwright/test';
+import { expect, type PlaywrightTestArgs, type PlaywrightWorkerArgs, type TestInfo } from '@playwright/test';
 import { SwaggerApiClient, GetOptions } from '../../Clients/swagger-api-client';
 import { GET_ROUTES, SwaggerGetRoute } from '../../Models/swagger-get-routes';
 import { MUTATION_ROUTES } from '../../Models/swagger-mutations';
 import coverage from '../../Data/endpoint-coverage.json';
-import { GET_HAR_CASES, HAR_CASES, HarCase, annotateHarCase, expectEndpointContent,
-  expectHarContent, harSuccessFixture, resolveHarOptions } from './har-cases';
+import { GET_HAR_CASES, HAR_CASES, HarCase, allureHierarchy, annotateHarCase, expectEndpointContent,
+  expectHarContent, harSuccessFixture, resolveHarOptions, resolveHarRequest } from './har-cases';
 import { attachHarMetadata } from './har-attach';
 import { expectErrorResponse, expectOpenApiRequest, expectOpenApiResponse, expectSuccessResponse,
   getOpenApiOperation, readResponseBody, requireApiEnvironment, strictSwagger } from './openapi';
@@ -52,6 +52,7 @@ interface Scenario {
   method: string; route: string; group: string; options: GetFixture; status?: number;
   observed?: HarCase; anonymous?: boolean; diagnostic?: boolean;
   mutation?: MutationFixture; negativeBody?: boolean;
+  rawBody?: string; contentType?: string;
 }
 interface Pending { method: string; route: string; group: string; reason: string }
 
@@ -64,12 +65,21 @@ const combinations = readLocal<Combination[]>('query-combinations.local.json', [
 const ordered = (object: Record<string, string> = {}) =>
   Object.fromEntries(Object.entries(object).sort(([a], [b]) => a.localeCompare(b)));
 const optionKey = (options: GetOptions) => JSON.stringify([ordered(options.query), ordered(options.pathParams)]);
+const bodyKey = (value: unknown): string => JSON.stringify(value, (_key, item) =>
+  item && typeof item === 'object' && !Array.isArray(item)
+    ? Object.fromEntries(Object.entries(item).sort(([a], [b]) => a.localeCompare(b))) : item) ?? 'undefined';
 const domainOf = (route: string) => route.split('/')[3];
 
-function observedFor(method: string, route: string, options: GetOptions, status?: number): HarCase | undefined {
+function observedFor(method: string, route: string, options: GetOptions, status?: number, body?: unknown): HarCase | undefined {
   return HAR_CASES.find(c => c.method === method && c.route === route &&
     (status === undefined ? c.status >= 200 && c.status < 300 : c.status === status) &&
-    (() => { const resolved = resolveHarOptions(c); return resolved && optionKey(resolved) === optionKey(options); })());
+    (() => {
+      const resolved = resolveHarOptions(c);
+      if (!resolved || optionKey(resolved) !== optionKey(options)) return false;
+      if (method === 'GET') return true;
+      const input = resolveHarRequest(c);
+      return input && input.rawBody === undefined && bodyKey(input.body) === bodyKey(configuredValue(body));
+    })());
 }
 
 function configuredValue(value: unknown): unknown {
@@ -99,13 +109,14 @@ function expectConfiguredContent(body: unknown, values: Record<string, unknown> 
   }
 }
 
-/** Uma única inscrição por entrada. Sucesso e erro vivem no mesmo endpoint do domínio. */
-export function registerDomainTests(domain: string): void {
+/** Apenas seleciona os casos; test()/describe() são declarados no arquivo do domínio. */
+export function getDomainCases(domain: string) {
   const scenarios = new Map<string, Scenario>();
   function add(s: Scenario, replace = false): void {
     // Status e arquivo HAR não fazem uma entrada repetida virar outro teste.
+    const body = s.mutation ? configuredValue(s.negativeBody ? s.mutation.badBody : s.mutation.body) : undefined;
     const key = JSON.stringify([s.method, s.route, optionKey(s.options), !!s.anonymous,
-      s.mutation ? (s.negativeBody ? 'negative' : 'positive') : '']);
+      bodyKey(body), s.rawBody]);
     if (replace || !scenarios.has(key)) scenarios.set(key, s);
   }
   for (const route of Object.keys(GET_ROUTES) as SwaggerGetRoute[]) {
@@ -118,7 +129,8 @@ export function registerDomainTests(domain: string): void {
     if (fixture && (explicit || !known.length || known.some(c => c.status >= 200 && c.status < 300))) {
       const observed = observedFor('GET', route, fixture, fixture.expectedStatus);
       add({method: 'GET', route, group: metadata.grupo, options: fixture,
-        status: fixture.expectedStatus ?? observed?.status, observed});
+        status: fixture.expectedStatus ?? observed?.status, observed,
+        anonymous: observed?.authenticated === false});
     }
     // Preferir sucesso quando a mesma entrada teve respostas diferentes nas capturas.
     const cases = [...known].sort((a, b) => a.status - b.status);
@@ -128,7 +140,7 @@ export function registerDomainTests(domain: string): void {
       if (!options) continue;
       add({method: 'GET', route, group: metadata.grupo, options,
         status: c.status < 500 ? c.status : undefined, observed: c,
-        anonymous: c.status === 401, diagnostic: c.status >= 500});
+        anonymous: c.authenticated === false, diagnostic: c.status >= 500});
     }
   }
   for (const combo of combinations) {
@@ -153,12 +165,31 @@ export function registerDomainTests(domain: string): void {
     if (!operation.bodySchema || fixture.body !== undefined) add({method: operation.method,
       route: operation.route, group: operation.grupo, options: {...options, expected: fixture.expected},
       status: fixture.expectedStatus, mutation: fixture,
-      observed: observedFor(operation.method, operation.route, options, fixture.expectedStatus)});
+      observed: observedFor(operation.method, operation.route, options, fixture.expectedStatus, fixture.body)});
     if (fixture.badBody !== undefined) {
       const status = fixture.badStatus ?? 400;
       add({method: operation.method, route: operation.route, group: operation.grupo,
         options, status, mutation: fixture, negativeBody: true,
-        observed: observedFor(operation.method, operation.route, options, status)});
+        observed: observedFor(operation.method, operation.route, options, status, fixture.badBody)});
+    }
+  }
+
+  // Reutiliza os payloads capturados no próprio endpoint; não cria uma suíte de replay.
+  if (process.env.RUN_MUTATIONS === '1') {
+    const captured = HAR_CASES.filter(c => c.method !== 'GET' && domainOf(c.route) === domain)
+      .sort((a, b) => a.status - b.status);
+    for (const c of captured) {
+      if (c.deprecated && process.env.RUN_DEPRECATED !== '1') continue;
+      if (c.status >= 500 && process.env.RUN_HAR_500 !== '1') continue;
+      const options = resolveHarOptions(c);
+      const input = resolveHarRequest(c);
+      if (!options || !input) continue;
+      const negativeBody = c.status >= 400 && c.status < 500;
+      add({method: c.method, route: c.route, group: c.group, options,
+        status: c.status < 500 ? c.status : undefined, observed: c,
+        anonymous: c.authenticated === false, diagnostic: c.status >= 500,
+        mutation: negativeBody ? {badBody: input.body} : {body: input.body}, negativeBody,
+        rawBody: input.rawBody, contentType: input.contentType});
     }
   }
 
@@ -169,8 +200,11 @@ export function registerDomainTests(domain: string): void {
     const route = operation.operation.slice(split + 1);
     const members = [...scenarios.values()].filter(s => s.method === method && s.route === route);
     const hasSuccess = members.some(s => !s.diagnostic && (s.status === undefined || s.status < 400));
-    const configuredMass = method === 'GET' ? !!customFixtures()[route] :
-      process.env.RUN_MUTATIONS === '1' && !!mutations[operation.operation];
+    const observedMass = members.some(s => s.observed && !s.diagnostic && s.observed.status < 300 && (
+      method !== 'GET' || s.observed.responseShape.itemNonNull === true ||
+      !!s.observed.responseContract?.properties?.itens?.items));
+    const configuredMass = observedMass || (method === 'GET' ? !!customFixtures()[route] :
+      process.env.RUN_MUTATIONS === '1' && !!mutations[operation.operation]);
     if (hasSuccess && (!operation.pendingMassFromUser || configuredMass)) continue;
     const reason = operation.deprecated && process.env.RUN_DEPRECATED !== '1' ? 'Endpoint depreciado' :
       operation.pendingMassFromUser ? 'Validação funcional pendente de massa — lista a testar.txt' :
@@ -179,88 +213,99 @@ export function registerDomainTests(domain: string): void {
     pending.push({method, route, group: operation.group, reason});
   }
   const groups = [...new Set([...scenarios.values(), ...pending].map(s => s.group))];
-  if (!groups.length) return;
-  test.describe(domain, () => {
-    for (const group of groups) {
-      const registerEndpoints = () => {
-        const members = [...scenarios.values()].filter(s => s.group === group);
-        const placeholders = pending.filter(s => s.group === group);
-        for (const route of [...new Set([...members, ...placeholders].map(s => s.route))]) {
-          test.describe(route, () => {
-            for (const [index, s] of members.filter(item => item.route === route).entries()) {
-              registerScenario(s, index + 1, placeholders.find(p => p.route === route && p.method === s.method)?.reason);
-            }
-            for (const item of placeholders.filter(p => p.route === route)) {
-              test(`${item.method}: pendente de massa`, {tag: ['@pending', item.method === 'GET' ? '@get' : '@mutation'],
-                annotation: [{type: 'operation', description: `${item.method} ${item.route}`},
-                  {type: 'pending', description: item.reason}]}, () => { test.fixme(true, item.reason); });
-            }
-          });
-        }
-      };
-      if (group === domain) registerEndpoints();
-      else test.describe(group, registerEndpoints);
-    }
+  return groups.map(group => {
+    const members = [...scenarios.values()].filter(s => s.group === group);
+    const placeholders = pending.filter(s => s.group === group);
+    return {group, endpoints: [...new Set([...members, ...placeholders].map(s => s.route))].map(route => ({
+      route,
+      scenarios: members.filter(s => s.route === route).map((s, index) => describeScenario(s, index + 1,
+        placeholders.find(p => p.route === route && p.method === s.method)?.reason)),
+      pending: placeholders.filter(p => p.route === route).map(item => ({
+        title: `${item.method}: pendente de massa`, reason: item.reason,
+        details: {tag: ['@pending', item.method === 'GET' ? '@get' : '@mutation'],
+          annotation: [...allureHierarchy(item.group, item.route),
+            {type: 'operation', description: `${item.method} ${item.route}`},
+            {type: 'pending', description: item.reason}]},
+      })),
+    }))};
   });
 }
 
-function registerScenario(s: Scenario, number: number, pendingReason?: string): void {
+function describeScenario(s: Scenario, number: number, pendingReason?: string) {
   const params = {...s.options.query, ...s.options.pathParams};
   const inputNames = Object.keys(params).sort();
-  const inputDescription = inputNames.length ? inputNames.map(key => {
+  const queryDescription = inputNames.length ? inputNames.map(key => {
     const value = params[key];
     // Valores privados nunca são usados no título. Filtros públicos ficam legíveis.
     const publicFilter = /^(periodo|tipo|status|pagina|quantidade|limite)$/i.test(key);
     return publicFilter ? `${key}=${value}` : `${key}=informado`;
-  }).join(', ') : 'sem parâmetros';
-  const label = s.diagnostic ? 'não deve retornar 500' : `HTTP ${s.status ?? '2xx'}`;
+  }).join(', ') : '';
+  const body = s.mutation ? (s.negativeBody ? s.mutation.badBody : s.mutation.body) : undefined;
+  const bodyDescription = s.rawBody !== undefined ? (s.rawBody.trim() ? 'JSON malformado' : 'corpo vazio') :
+    Array.isArray(body) ? 'body em lista' : body && typeof body === 'object' ? `body: ${Object.keys(body).join(', ')}` :
+      body !== undefined ? 'body informado' : '';
+  const inputDescription = [queryDescription, bodyDescription].filter(Boolean).join('; ') ||
+    (s.method === 'GET' ? 'sem parâmetros' : 'sem corpo');
+  const label = s.diagnostic ? 'sucesso HTTP 2xx após 500 observado' : s.status === 400 ? 'validação HTTP 400' :
+    s.status && s.status >= 400 ? `erro HTTP ${s.status}` : `sucesso HTTP ${s.status ?? '2xx'}`;
   const tags = [s.method === 'GET' ? '@get' : '@mutation'];
   if (s.status && s.status >= 400) tags.push('@negative');
   if (s.diagnostic) tags.push('@diagnostic');
-  test(`${s.method}: ${label} — ${s.anonymous ? 'sem autenticação' : inputDescription} — caso ${number}`,
-    {tag: tags, annotation: [{type: 'operation', description: `${s.method} ${s.route}`},
+  return {scenario: s, title: `${s.method}: ${label} — ${s.anonymous ? 'sem autenticação' : inputDescription} — caso ${number}`,
+    details: {tag: tags, annotation: [...allureHierarchy(s.group, s.route), {type: 'operation', description: `${s.method} ${s.route}`},
       {type: 'scenario', description: s.status !== undefined && s.status >= 400 ? 'error' : 'success'},
-      ...(pendingReason ? [{type: 'coverage-pending', description: pendingReason}] : [])]},
-    async ({request, playwright}, testInfo) => {
-      const {baseUrl} = requireApiEnvironment();
-      if (s.observed) annotateHarCase(s.observed);
-      let context = request;
-      const anonymous = s.anonymous
-        ? await playwright.request.newContext({baseURL: baseUrl, extraHTTPHeaders: {}}) : undefined;
-      if (anonymous) context = anonymous;
-      try {
-        let response: {status: number; body: unknown};
-        if (s.method === 'GET') {
-          response = await new SwaggerApiClient(context).getRoute(s.route as SwaggerGetRoute,
-            {...s.options, allowInvalidParams: !!s.diagnostic || (s.status !== undefined && s.status >= 400)});
-        } else {
-          const fixture = s.mutation!;
-          const body = configuredValue(s.negativeBody ? fixture.badBody : fixture.body);
-          if (!s.negativeBody) expectOpenApiRequest(s.method, s.route, body);
-          const url = s.route.replace(/\{([^}]+)\}/g, (_, key: string) => {
-            const value = s.options.pathParams?.[key];
-            if (!value) throw new Error(`Parâmetro de path obrigatório ausente: ${key}`);
-            return encodeURIComponent(value);
-          });
-          const raw = await context.fetch(url, {method: s.method, params: s.options.query,
-            headers: fixture.headers, ...(body === undefined ? {} : {data: body})});
-          response = {status: raw.status(), body: await readResponseBody(raw)};
-        }
-        if (s.observed) await attachHarMetadata(s.observed, response.status);
-        else await testInfo.attach('HTTP', {contentType: 'application/json',
-          body: JSON.stringify({method: s.method, route: s.route, status: response.status, queryNames: inputNames})});
-        if (s.status !== undefined && s.status >= 400) {
-          expect(response.status, `${s.method} ${s.route}: status de erro exato`).toBe(s.status);
-          if (getOpenApiOperation(s.method, s.route)?.responses[String(s.status)])
-            expectErrorResponse(s.method, s.route, response, s.status);
-          else if (strictSwagger()) expectOpenApiResponse(s.method, s.route, response.status, response.body);
-          else testInfo.annotations.push({type: 'DIVERGENCIA_SWAGGER', description: `HTTP ${s.status} fora do Swagger`});
-        } else {
-          expectSuccessResponse(s.method, s.route, response, s.status);
-          if (s.method === 'GET') expectEndpointContent(s.route, s.options, response.body);
-        }
-        if (s.observed && !s.diagnostic) expectHarContent(s.observed, response.body);
-        expectConfiguredContent(response.body, s.options.expected);
-      } finally { await anonymous?.dispose(); }
+      ...(pendingReason ? [{type: 'coverage-pending', description: pendingReason}] : [])]}};
+}
+
+export async function executeScenario(s: Scenario,
+  fixtures: Pick<PlaywrightTestArgs, 'request'> & Pick<PlaywrightWorkerArgs, 'playwright'>, testInfo: TestInfo): Promise<void> {
+  const {request, playwright} = fixtures;
+  const inputNames = Object.keys({...s.options.query, ...s.options.pathParams}).sort();
+  const {baseUrl} = requireApiEnvironment();
+  if (s.observed) annotateHarCase(s.observed);
+  let context = request;
+  const anonymous = s.anonymous
+    ? await playwright.request.newContext({baseURL: baseUrl, extraHTTPHeaders: {}}) : undefined;
+  if (anonymous) context = anonymous;
+  try {
+    let response: {status: number; body: unknown};
+    if (s.method === 'GET') {
+      response = await new SwaggerApiClient(context).getRoute(s.route as SwaggerGetRoute,
+        {...s.options, allowInvalidParams: !!s.observed || !!s.diagnostic || (s.status !== undefined && s.status >= 400)});
+    } else {
+      const fixture = s.mutation!;
+      const body = configuredValue(s.negativeBody ? fixture.badBody : fixture.body);
+      if (!s.negativeBody && !s.diagnostic) {
+        expectOpenApiRequest(s.method, s.route, body);
+      }
+      const url = s.route.replace(/\{([^}]+)\}/g, (_, key: string) => {
+        const value = s.options.pathParams?.[key];
+        if (!value) throw new Error(`Parâmetro de path obrigatório ausente: ${key}`);
+        return encodeURIComponent(value);
+      });
+      const data = s.rawBody ?? (s.contentType && body !== undefined ? JSON.stringify(body) : body);
+      const raw = await context.fetch(url, {method: s.method, params: s.options.query, maxRedirects: 0,
+        headers: {...fixture.headers, ...(s.contentType ? {'content-type': s.contentType} : {})},
+        ...(data === undefined ? {} : {data})});
+      response = {status: raw.status(), body: await readResponseBody(raw)};
+    }
+    if (s.observed) await attachHarMetadata(s.observed, response.status);
+    else await testInfo.attach('HTTP', {contentType: 'application/json',
+      body: JSON.stringify({method: s.method, route: s.route, status: response.status, queryNames: inputNames})});
+    if (s.status !== undefined && s.status >= 400) {
+      expect(response.status, `${s.method} ${s.route}: status de erro exato`).toBe(s.status);
+      if (getOpenApiOperation(s.method, s.route)?.responses[String(s.status)])
+        expectErrorResponse(s.method, s.route, response, s.status);
+      else if (strictSwagger()) expectOpenApiResponse(s.method, s.route, response.status, response.body);
+      else testInfo.annotations.push({type: 'DIVERGENCIA_SWAGGER', description: `HTTP ${s.status} fora do Swagger`});
+    } else {
+      expectSuccessResponse(s.method, s.route, response, s.status);
+      if (s.method === 'GET') expectEndpointContent(s.route, s.options, response.body, !!s.observed?.requestRelations?.length);
+    }
+    if (s.observed && !s.diagnostic) expectHarContent(s.observed, response.body, {
+      query: s.options.query, pathParams: s.options.pathParams,
+      body: s.mutation ? configuredValue(s.negativeBody ? s.mutation.badBody : s.mutation.body) : undefined,
     });
+    expectConfiguredContent(response.body, s.options.expected);
+  } finally { await anonymous?.dispose(); }
 }

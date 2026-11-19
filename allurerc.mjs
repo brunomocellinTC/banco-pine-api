@@ -8,6 +8,8 @@ export default defineConfig({
       options: {
         reportName: 'Automacao API',
         reportLanguage: 'pt',
+        groupBy: ['parentSuite', 'suite', 'subSuite'],
+        appendTitlePath: false,
         singleFile: process.env.ALLURE_SINGLE_FILE === '1',
       },
     },

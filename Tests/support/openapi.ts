@@ -354,9 +354,23 @@ export function inspectResponseContract(
             }
         }
         const unknownProperty = issue.match(/^(\$[^ ]+) não está definido no schema$/);
+        if (method.toUpperCase()==='POST' && status===200 && route==='/api/v1/Senha/Codigo/Solicitar' &&
+            unknownProperty?.[1]==='$.item' && isRecord(body) && isRecord(body.item) &&
+            Object.keys(body.item).length===2 && typeof body.item.tipo==='string' && body.item.tipo.length>0 &&
+            typeof body.item.valor==='string' && body.item.valor.length>0) {
+            observedDifferences.push('$.item: destino de recuperação com tipo e valor observado no HAR');
+            continue;
+        }
         if (method.toUpperCase()==='GET' && status===200 && unknownProperty &&
             extraPropertiesInHar[route]?.test(unknownProperty[1])) {
             observedDifferences.push(`${unknownProperty[1]}: propriedade extra presente no HAR`);
+            continue;
+        }
+        if (method.toUpperCase()==='GET' && status===200 &&
+            route==='/api/v1/Pix/Favorito/Listar' &&
+            /^\$\.itens\[\d+\]\.chaves\[\d+\]\.tipoChave não deve ser nulo$/.test(issue) &&
+            valueAtLocation(body, issue.slice(0, issue.indexOf(' não deve ser nulo')))===null) {
+            observedDifferences.push('$.itens[*].chaves[*].tipoChave: nulo observado no HAR');
             continue;
         }
         if (method.toUpperCase()==='GET' && status===200 &&

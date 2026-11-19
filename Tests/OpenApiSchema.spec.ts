@@ -1,7 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { parseResponseBody } from '../Clients/response-body';
 import { expectOpenApiResponse, expectErrorResponse, expectOpenApiRequest, inspectResponseContract } from './support/openapi';
-import { GET_HAR_CASES, expectHarContent } from './support/har-cases';
+import { GET_HAR_CASES, allureHierarchy, expectHarContent } from './support/har-cases';
+
+test.describe('OpenApiSchema', {annotation: allureHierarchy('Validador OpenAPI', 'Respostas e payloads', 'OpenApiSchema')}, () => {
 
 test('validates a response against its documented OpenAPI schema', () => {
     const route = '/api/v1/Autenticacao/ObterTecladoVirtual';
@@ -105,4 +107,16 @@ test('propriedades desconhecidas fora das exceções HAR continuam reprovadas', 
   const result=inspectResponseContract('GET','/api/v1/Autenticacao/ObterTecladoVirtual',200,
     {inventado:true});
   expect(result.errors.join(' ')).toContain('inventado');
+  const recovery = inspectResponseContract('POST', '/api/v1/Senha/Codigo/Solicitar', 200,
+    {item: {tipo: 'EMAIL', valor: 'destino-de-teste'}});
+  expect(recovery.errors).toEqual([]);
+  expect(recovery.observedDifferences.length).toBeGreaterThan(0);
+  const unexpected = inspectResponseContract('POST', '/api/v1/Senha/Codigo/Solicitar', 200,
+    {item: {tipo: 'EMAIL', valor: 'destino-de-teste', inventado: true}});
+  expect(unexpected.errors.join(' ')).toContain('$.item');
+  const favorite = inspectResponseContract('GET', '/api/v1/Pix/Favorito/Listar', 200,
+    {itens: [{chaves: [{tipoChave: null}]}]});
+  expect(favorite.errors).toEqual([]);
+  expect(favorite.observedDifferences.join(' ')).toContain('tipoChave');
+});
 });
