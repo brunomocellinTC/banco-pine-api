@@ -1,52 +1,48 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
 import { ApiResponse } from '../Models/api-response.model';
+import { parseResponseBody } from './response-body';
 
+/** Cliente HTTP único. Cabeçalhos do Playwright (incluindo autenticação) são herdados. */
 export class BaseApiClient {
-  protected readonly request: APIRequestContext;
-  protected readonly basePath: string;
-  protected readonly headers: Record<string, string>;
+  constructor(
+    protected readonly request: APIRequestContext,
+    protected readonly basePath: string,
+    protected readonly headers: Record<string, string> = {},
+  ) {}
 
-  constructor(request: APIRequestContext, basePath: string, headers: Record<string, string> = {}) {
-    this.request = request;
-    this.basePath = basePath;
-    this.headers = headers;
+  protected get<T>(endpoint: string, params?: Record<string, string>): Promise<ApiResponse<T>> {
+    return this.send<T>('GET', endpoint, { params });
   }
-
-  protected async get<T>(endpoint: string,params?: Record<string, string>): Promise<ApiResponse<T>> {
-    const response = await this.request.get(`${this.basePath}${endpoint}`,{ params, headers: this.headers });
+  protected post<T>(endpoint: string, data?: unknown, params?: Record<string, string>): Promise<ApiResponse<T>> {
+    return this.send<T>('POST', endpoint, { data, params });
+  }
+  protected put<T>(endpoint: string, data?: unknown, params?: Record<string, string>): Promise<ApiResponse<T>> {
+    return this.send<T>('PUT', endpoint, { data, params });
+  }
+  protected patch<T>(endpoint: string, data?: unknown, params?: Record<string, string>): Promise<ApiResponse<T>> {
+    return this.send<T>('PATCH', endpoint, { data, params });
+  }
+  protected delete<T = unknown>(endpoint: string, params?: Record<string, string>, data?: unknown): Promise<ApiResponse<T>> {
+    return this.send<T>('DELETE', endpoint, { params, data });
+  }
+  protected async send<T>(method: string, endpoint: string, opts: {data?: unknown; params?: Record<string, string>} = {}): Promise<ApiResponse<T>> {
+    const url = `${this.basePath.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
+    const response = await this.request.fetch(url, {
+      method, headers: this.headers, params: opts.params, ...(opts.data === undefined ? {} : { data: opts.data }),
+    });
     return this.handleResponse<T>(response);
   }
-
-  protected async post<T>(endpoint: string,data: unknown): Promise<ApiResponse<T>> {
-    const response = await this.request.post(`${this.basePath}${endpoint}`,{ data, headers: this.headers });
-    return this.handleResponse<T>(response);
-  }
-
-  protected async put<T>(endpoint: string,data: unknown): Promise<ApiResponse<T>> {
-    const response = await this.request.put(`${this.basePath}${endpoint}`,{ data, headers: this.headers });
-    return this.handleResponse<T>(response);
-  }
-
-  protected async patch<T>(endpoint: string,data: unknown): Promise<ApiResponse<T>> {
-    const response = await this.request.patch(`${this.basePath}${endpoint}`,{ data, headers: this.headers });
-    return this.handleResponse<T>(response);
-  }
-
-  protected async delete(endpoint: string,params?: Record<string, string>): Promise<ApiResponse<null>> {
-    const response = await this.request.delete(`${this.basePath}${endpoint}`,{ params, headers: this.headers });
-
-    return {
-      status: response.status(),
-      headers: response.headers(),
-      body: null,
-    };
-  }
-
   protected async handleResponse<T>(response: APIResponse): Promise<ApiResponse<T>> {
-    return {
-      status: response.status(),
-      headers: response.headers(),
-      body: await response.json(),
-    };
+    const contentType = response.headers()['content-type'] || '';
+    const buffer = await response.body();
+    let body: unknown = null;
+    if (buffer.length > 0) {
+      const text = buffer.toString('utf8');
+      if (buffer.subarray(0,5).toString() === '%PDF-') body = buffer;
+      else if (/\bjson\b|\+json\b|^(text\/|application\/xml)/i.test(contentType) ||
+        /^\s*[\{\[]/.test(text)) body = parseResponseBody(text, contentType);
+      else body = buffer;
+    }
+    return { status: response.status(), headers: response.headers(), body: body as T | null };
   }
 }

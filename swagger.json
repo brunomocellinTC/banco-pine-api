@@ -5419,6 +5419,106 @@
         }
       }
     },
+    "/api/v1/Investimento/Carteira/Resgate/Status": {
+      "get": {
+        "tags": [
+          "InvestimentoCarteira"
+        ],
+        "summary": "Consulta a situação de um resgate pela chave (idIdempotente) enviada no resgate.",
+        "parameters": [
+          {
+            "name": "idIdempotente",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/Investimento/Comprovante/Aplicacao": {
       "get": {
         "tags": [
@@ -5785,6 +5885,106 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Investimento/Produto/Comprar/Status": {
+      "get": {
+        "tags": [
+          "InvestimentoProduto"
+        ],
+        "summary": "Consulta a situação de uma aplicação pela chave (idIdempotente) enviada na compra.",
+        "parameters": [
+          {
+            "name": "idIdempotente",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
             "content": {
               "text/plain": {
                 "schema": {
@@ -13052,6 +13252,76 @@
         }
       }
     },
+    "/api/v1/Seguros/Obter": {
+      "get": {
+        "tags": [
+          "Seguros"
+        ],
+        "summary": "Obtém os produtos de seguro conforme o tipo da conta (PF/PJ) do usuário autenticado.",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Seguros.SegurosObterResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Seguros.SegurosObterResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Seguros.SegurosObterResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/Senha/Codigo/Solicitar": {
       "post": {
         "tags": [
@@ -16767,6 +17037,31 @@
         },
         "additionalProperties": false
       },
+      "Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "Request-Id": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "reqId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/System.Net.HttpStatusCode"
+          },
+          "item": {
+            "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult"
+          }
+        },
+        "additionalProperties": false
+      },
       "Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Investimento.InvestimentoComprovanteAplicacaoResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
         "type": "object",
         "properties": {
@@ -17513,6 +17808,31 @@
           },
           "item": {
             "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Pix.Reivindicacao.PixReivindicaoResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pine.Framework.API.Domain.Result.ResultadoPadrao`1[[Pine.IBPF.Domain.Result.Seguros.SegurosObterResult, Pine.IBPF.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]": {
+        "type": "object",
+        "properties": {
+          "Request-Id": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "reqId": {
+            "type": "string",
+            "nullable": true
+          },
+          "mensagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/System.Net.HttpStatusCode"
+          },
+          "item": {
+            "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Seguros.SegurosObterResult"
           }
         },
         "additionalProperties": false
@@ -18720,6 +19040,11 @@
           },
           "dadosSeguranca": {
             "$ref": "#/components/schemas/Pine.IBPF.Domain.Input.DadosSeguranca.DadosSegurancaInput"
+          },
+          "idIdempotente": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -18760,6 +19085,11 @@
           },
           "dadosSeguranca": {
             "$ref": "#/components/schemas/Pine.IBPF.Domain.Input.DadosSeguranca.DadosSegurancaInput"
+          },
+          "idIdempotente": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -20470,6 +20800,11 @@
           },
           "status": {
             "$ref": "#/components/schemas/Pine.IBPF.Domain.Compartilhados.Enum.ContaStatusAppEnum"
+          },
+          "dataAbertura": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -21645,6 +21980,48 @@
             "items": {
               "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Investimento.InvestimentoMovimentacaoResult"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoEnumResult": {
+        "enum": [
+          "NAO_ENCONTRADO",
+          "EM_PROCESSAMENTO",
+          "CONCLUIDO",
+          "FALHA"
+        ],
+        "type": "string"
+      },
+      "Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoResult": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Investimento.InvestStatusOperacaoEnumResult"
+          },
+          "codigoTransacao": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "valor": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "mensagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "codigoProduto": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         },
@@ -24577,6 +24954,54 @@
           "registrosPorPagina": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pine.IBPF.Domain.Result.Seguros.SeguroGrupoResult": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "produtos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Seguros.SeguroProdutoResult"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pine.IBPF.Domain.Result.Seguros.SeguroProdutoResult": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "subtitulo": {
+            "type": "string",
+            "nullable": true
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Pine.IBPF.Domain.Result.Seguros.SegurosObterResult": {
+        "type": "object",
+        "properties": {
+          "grupos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pine.IBPF.Domain.Result.Seguros.SeguroGrupoResult"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

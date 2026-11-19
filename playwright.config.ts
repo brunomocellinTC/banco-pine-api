@@ -1,48 +1,21 @@
 import { defineConfig } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
-import { getEnv } from './Scripts/test-data';
 
-dotenv.config({
-  path: path.resolve(__dirname, '.env'),
-});
-
-const env = getEnv();
+dotenv.config({path: path.resolve(__dirname, '.env'), quiet: true});
+const baseURL = process.env.API_BASE_URL?.trim();
+const loginHash = process.env.LOGIN_HASH?.trim();
 
 export default defineConfig({
   testDir: './Tests',
-
-  fullyParallel: true,
-
-  forbidOnly: !!process.env.CI,
-
-  retries: process.env.CI ? 2 : 0,
-
-  workers: process.env.CI ? 1 : undefined,
-
-  reporter: [
-    ['list'],
-    [
-      'allure-playwright',
-      {
-        resultsDir: 'allure-results',
-        detail: true,
-        suiteTitle: true,
-        environmentInfo: {
-          framework: 'Playwright',
-          baseURL: 'https://reqres.in',
-          env,
-        },
-      },
-    ],
-  ],
-
+  fullyParallel: false,
+  forbidOnly: Boolean(process.env.CI),
+  retries: 0,
+  workers: 1,
+  reporter: [['list'], ['./Scripts/coverage-reporter.ts'], ['allure-playwright', {resultsDir: 'allure-results', detail: true, suiteTitle: false,
+    environmentInfo: {framework: 'Playwright', contrato: 'swagger.json'}}]],
   use: {
-    baseURL: 'https://reqres.in',
-
-    extraHTTPHeaders: {
-      'x-api-key': process.env.REQRES_API_KEY || '',
-      'X-Reqres-Env': env,
-    },
+    baseURL,
+    extraHTTPHeaders: loginHash ? {'x-login-hash': loginHash} : {},
   },
 });

@@ -9,6 +9,6 @@ export class AutenticacaoApiClient extends BaseApiClient {
     }
 
     async obterTecladoVirtual(cpf: string): Promise<ApiResponse<TecladoVirtualResponse>> {
-        return this.get<TecladoVirtualResponse>('/ObterTecladoVirtual', { CPF: cpf });
+        return this.get<TecladoVirtualResponse>('/ObterTecladoVirtual', { cpf });
     }
 }

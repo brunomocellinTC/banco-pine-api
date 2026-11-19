@@ -1,0 +1,13 @@
+import { test } from '@playwright/test';
+import type { HarCase } from './har-cases';
+export async function attachHarMetadata(c: HarCase, actualStatus: number): Promise<void> {
+  await test.info().attach('HAR versus execução (sem dados sensíveis)', {
+    contentType:'application/json',
+    body:JSON.stringify({method:c.method,route:c.route,group:c.group,
+      source:'HAR',capturedAt:c.capturedAt,observedStatus:c.status,actualStatus,
+      documentedStatus:c.documented,queryNames:Object.keys(c.query),
+      pathNames:Object.keys(c.pathParams),observations:c.observations,sources:c.sources,
+      checks:{observedContent:!!c.responseContract,errorIdentity:!!c.errorIdentity,
+        requestRelations:c.requestRelations || [],malformedJson:!!c.request?.rawBodyEnv}},null,2),
+  });
+}
