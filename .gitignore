@@ -20,5 +20,6 @@ node_modules/
 *.har
 Data/*har*.local.json
 Data/query-combinations.local.json
+Data/har-replay.local.json
 
 # Evidências brutas podem conter dados pessoais, headers de autenticação e informações de conta

@@ -1,0 +1,7 @@
+{
+  "osd-api-ibpfwebapi.hml.pine.com.har#2": {
+    "query": {
+      "cpf": "${ENV:CPF}"
+    }
+  }
+}

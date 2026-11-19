@@ -15,6 +15,7 @@
     "report:clear": "node -e \"const fs=require('fs'); for (const dir of ['allure-report','allure-results']) { fs.rmSync(dir,{recursive:true,force:true}); fs.mkdirSync(dir,{recursive:true}); }\"",
     "test:har": "playwright test Tests/GetSuccess.spec.ts Tests/HarGetVariants.spec.ts Tests/GetBadRequest.spec.ts Tests/HarObserved422.spec.ts",
     "test:har:500": "playwright test Tests/HarObserved500.spec.ts",
+    "test:har:1to1": "node -e \"const {spawnSync}=require('child_process'); const r=spawnSync(process.execPath,['node_modules/@playwright/test/cli.js','test','Tests/HarReplay.spec.ts'],{stdio:'inherit',env:{...process.env,RUN_HAR_REPLAY:'1'}}); process.exit(r.status ?? 1)\"",
     "test:matriz": "playwright test Tests/QueryCombinations.spec.ts"
   },
   "keywords": [],

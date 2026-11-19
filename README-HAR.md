@@ -1,5 +1,7 @@
 # Integração dos HARs no projeto Playwright
 
+Para comparar **valores e corpos completos de cada uma das 171 requests**, consulte [README-HAR-1TO1.md](README-HAR-1TO1.md). A suíte 1:1 é habilitada separadamente e preserva as capturas repetidas.
+
 Foram lidos os 9 HARs anexados. O arquivo `Data/har-observed-cases.json` contém apenas metadados sanitizados: método, rota, parâmetros ou placeholders de ambiente, status observado, contagem e indicação de status documentado.
 **HAR é histórico observado**, não garantia de que a API retornará o mesmo código em uma nova execução. Em especial, HTTP 200 com `item: null` não comprova resultado funcional e HTTP 500 é defeito/diagnóstico, jamais sucesso.
 
